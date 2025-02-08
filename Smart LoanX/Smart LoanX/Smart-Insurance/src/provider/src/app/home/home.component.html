@@ -1,0 +1,52 @@
+<!-- src/app/dashboard/home/home.component.html -->
+<div class="home-container">
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+      <h2>Welcome to the Banker Dashboard</h2>
+      <p>Here’s an overview of your branch's performance and pending tasks.</p>
+    </section>
+  
+    <!-- Key Metrics Section -->
+    <section class="metrics-section">
+      <h3>Key Metrics</h3>
+      <div class="metrics-grid">
+        <div class="metric">
+          <h4>Total Loans Processed</h4>
+          <p>{{ totalLoansProcessed }}</p>
+        </div>
+        <div class="metric">
+          <h4>Pending Loans</h4>
+          <p>{{ pendingLoans.length }}</p>
+        </div>
+        <div class="metric">
+          <h4>Branch History</h4>
+          <p (click)="navigateToAnalytics()" class="clickable">
+            {{ branchHistory }}
+          </p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Pending Loans Table Section -->
+    <section class="pending-loans-section">
+      <h3>Pending Loans</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Loan ID</th>
+            <th>Applicant Name</th>
+            <th>Loan Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let loan of pendingLoans">
+            <td>{{ loan.id }}</td>
+            <td>{{ loan.applicantName }}</td>
+            <td> {{loan.amount | currency:'INR':'symbol':'1.0-0'}} </td>
+            <td>{{ loan.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
