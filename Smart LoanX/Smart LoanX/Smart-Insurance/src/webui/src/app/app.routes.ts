@@ -33,7 +33,6 @@
 //   { path: 'loan-application', component: LoanApplicationComponent }, // Loan application route
 //   { path: 'loan-status', component: LoanStatusComponent }, // Loan status route
 // ];
-
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component'; // Import the HomeComponent
 import { LoanApplicationComponent } from './components/loan-application/loan-application.component';
@@ -45,5 +44,5 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent }, // Homepage route
   { path: 'login', component: LoginComponent }, // Login route
   { path: 'loan-application', component: LoanApplicationComponent }, // Loan application route
-  { path: 'loan-status', component: LoanStatusComponent }, // Loan status route
+  { path: 'loan-status/:loanId', component: LoanStatusComponent }, // Loan status route with loanId parameter
 ];

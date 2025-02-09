@@ -1,9 +1,9 @@
-<!-- src/app/dashboard/home/home.component.html -->
+
 <div class="home-container">
     <!-- Welcome Section -->
     <section class="welcome-section">
-      <h2>Welcome to the Banker Dashboard</h2>
-      <p>Here’s an overview of your branch's performance and pending tasks.</p>
+      <h2>Welcome to Smart LoanX Dashboard</h2>
+      <p>Powered by Machine Learning for seamless loan processing.</p>
     </section>
   
     <!-- Key Metrics Section -->
@@ -30,12 +30,14 @@
     <!-- Pending Loans Table Section -->
     <section class="pending-loans-section">
       <h3>Pending Loans</h3>
-      <table>
+      <table >
         <thead>
           <tr>
-            <th>Loan ID</th>
+            <th>ID</th>
             <th>Applicant Name</th>
             <th>Loan Amount</th>
+            <th>Income</th>
+            <th>AI Decision</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -43,10 +45,20 @@
           <tr *ngFor="let loan of pendingLoans">
             <td>{{ loan.id }}</td>
             <td>{{ loan.applicantName }}</td>
-            <td> {{loan.amount | currency:'INR':'symbol':'1.0-0'}} </td>
-            <td>{{ loan.status }}</td>
+            <td>{{ loan.amount }}</td>
+            <td>{{ loan.Income }}</td>
+            <td>{{ loan.AiCheck }}</td>
+            <td>
+              <select [(ngModel)]="loan.status" (change)="updateLoanStatus(loan.id, loan.status)">
+                <option value="">Pending</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Rejected">Rejected</option>
+              </select>
+            </td>
           </tr>
         </tbody>
       </table>
+      
     </section>
   </div>
+  
